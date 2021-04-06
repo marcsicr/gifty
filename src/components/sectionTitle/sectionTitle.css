@@ -1,0 +1,15 @@
+.section-title{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    color:white;
+}
+
+
+.section-title svg, .section-title img{
+    margin-right: 10px;
+}
+
+.view-more{
+    cursor:pointer;
+}

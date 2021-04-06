@@ -1,0 +1,11 @@
+
+.view-more{
+    color:grey;
+}
+
+.section-header{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}

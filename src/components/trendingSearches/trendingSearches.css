@@ -1,0 +1,45 @@
+.trendings-wrapper{
+    display:block;
+
+}
+.trendings-list{
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+}
+
+.trendings-item{
+    display:inline-block;
+    padding:5px 10px;
+    color:white;
+    font-weight: 600;
+}
+
+.trendings-item:hover{
+    cursor:pointer;
+}
+
+.trendings-title{
+    color:white;
+    text-align: left;
+}
+
+.tg:hover{
+    background-color: var(--green);
+}
+
+.tb:hover{
+    background-color: var(--blue);
+}
+
+.tp:hover{
+    background-color: var(--purple);
+}
+
+.tr:hover{
+    background-color: var(--red);
+}
+
+.ty:hover{
+    background-color: var(--yellow);
+}

@@ -1,0 +1,97 @@
+
+.carousel-wrapper{
+    --carousel-height:160px;
+    height:var(--carousel-height);
+    overflow: hidden;
+    position:relative;
+}
+
+.previous,.next{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    width:36px;
+    z-index: 1;
+    top:0px;
+    bottom:0px;
+    background:rgba(0, 0, 0, 0) linear-gradient(-90deg, rgba(18, 18, 18, 0.75) 0%, rgba(18, 18, 18, 0) 100%) repeat scroll 0% 0%;
+}
+
+.previous{
+    transform:rotate(180deg);
+    left:0px;
+}
+
+.next{
+    right:0px;
+}
+
+.previous:hover,.next:hover{
+    cursor:pointer;
+}
+.previous:hover svg g,.next:hover svg g{
+    fill: white;
+ }
+
+.list-wrapper{
+    display: block;
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    overflow:hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.list{
+    display:flex;
+    margin:0px;
+    padding: 0px;
+    
+    list-style-type: none;
+    
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    
+    user-select: none;
+}
+
+.list-item:first-child{
+    margin:0px;
+}
+
+.list-item{
+    display:inline-block;
+    margin: 0px 3px;
+    height:var(--carousel-height);
+    scroll-snap-align: center;
+}
+
+
+ .item-picture{
+    height:100%;
+    width:auto;
+    object-fit: contain;
+}
+
+.fadeItem {
+    animation:fadeOut 1s forwards;
+}
+
+.init-hidden{
+    display:none;
+}
+
+@keyframes fadeOut{
+    0% {opacity:1}
+    100% {opacity:0; display:none; cursor:initial}
+}
+

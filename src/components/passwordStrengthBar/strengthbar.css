@@ -1,0 +1,33 @@
+.password-strength-bar{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+
+    
+    position:relative;
+    top:-10px;
+}
+
+.password-strength-bar span{
+    border-top: 5px solid grey;
+    width:20%;
+}
+
+.password-strength-bar span.level0{
+    border-color :var(--red);
+}
+
+.password-strength-bar span.level1{
+    border-color :var(--yellow)
+}
+
+.password-strength-bar span.level2{
+    border-color :var(--blue)
+}
+
+.password-strength-bar span.level3{
+    border-color :var(--green)
+}
+
+

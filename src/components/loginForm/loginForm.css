@@ -1,0 +1,40 @@
+.form-container{
+    display:flex;
+    justify-content: center;
+}
+
+.login-form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 12px;
+}
+
+.form-wrapper{
+    width:300px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    text-align: center;
+}
+
+
+
+.login-input, .btn-form{
+
+    margin-bottom:15px;
+   font-size:14px;
+   padding: 5px 5px 5px 12px;
+   font-weight: 400;
+   line-height: normal;
+   height: 36px;
+}
+
+
+.link-register{
+    text-align: center;
+    font-weight: 600;
+    color:white;
+    text-decoration: none;
+}

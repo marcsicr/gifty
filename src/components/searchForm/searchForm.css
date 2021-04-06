@@ -1,0 +1,69 @@
+.search-gifs-form{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    padding:15px 0;
+
+}
+
+.form-input{
+    font-size: 18px;
+    line-height: 2;
+}
+
+.search-gifs-form input[type="text"]{
+    width:100%;
+    border-style: none;
+    box-shadow: none;
+    padding-left: 1em;
+}
+
+.search-gifs-form input[type="text"]:focus{
+    outline-width: 0;
+}
+
+@keyframes CNual{
+    0% {opacity: 0; background-position: 0% 100%;}
+    50% {opacity:1;}
+    100%{opacity:0; background-position:100% 0%}
+}
+
+.search-button{
+    cursor:pointer;
+}
+.gradient{
+    background: rgba(0,0,0,0) linear-gradient(45deg, rgb(153, 51, 255) 0%, rgb(255, 102, 102) 100%) repeat scroll 0% 0%;
+    background-attachment:scroll;
+    position:relative;
+}
+
+.gradient::before{
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-size:400%;
+    background-position:0% 100%;
+    content:"";
+    inset:0px;
+
+    animation:2s linear 0s infinite normal none running CNual;
+    background-image:linear-gradient(45deg, rgb(153, 51, 255) 0%, rgb(255, 102, 102) 50%, rgb(153, 51, 255) 100%);
+}
+
+
+.gradient img{
+    z-index: 1;
+}
+
+
+.search-button{
+    cursor:pointer;
+    display:flex;
+    justify-content: center;
+    padding:8px;
+}
+
+select{
+    border-style: none;
+    border-left: 1px solid black;
+}
