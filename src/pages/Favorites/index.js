@@ -4,11 +4,13 @@ import Header from 'components/header/Header'
 import SearchForm from "components/searchForm/SearchForm";
 import useFavoriteGifs from 'hooks/useFavoriteGifs';
 import GifsGrid from 'components/gifsGrid/GifsGrid';
-import LoadingDots from 'components/loadingDots';
-import PopUpConfirm from 'components/popUpConfirm';
+import LoadingDots from 'components/loaders/loadingDots';
+import { useLoggedUser } from 'hooks/user/useLoggedUser';
 
 export default function Favorites(){
 
+    useLoggedUser()
+    
     const {favGifsData,isGifsDataLoading} = useFavoriteGifs()
 
     useEffect(()=>{

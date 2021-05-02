@@ -22,8 +22,8 @@ export async function loginService({username,password}){
             console.log(errorMsg)
         }
 
-        const {username,jwt} = data
-        return {success:!error,username,jwt}
+        const {username,jwt,userSettings} = data
+        return {success:!error,username,jwt,userSettings}
 
     }else{
         return{success:false,jwt:'',username:''}
@@ -135,4 +135,56 @@ export async function getGifFavorites(jwt){
     }
 
     return []
+}
+
+export async function updateAvatarImage(jwt,formData){
+
+    //https://arunrajeevan.medium.com/fetch-api-and-formdata-in-html-world-6b0322273260
+
+    const response = await fetch(GIFTY_API_URL + "/user/avatar",
+    {
+        method:"PUT", 
+        headers:{'Authorization': `Bearer ${jwt}`},
+        body:formData
+    }).catch(
+        error => {
+        console.error("Updating avatar failed" + error.message)
+        return false;
+    })
+
+    return response.ok;
+}
+
+export async function getAvatarImage(jwt){
+
+   const response = await fetch(GIFTY_API_URL+ "/user/avatar",{
+        method:"GET",
+        headers:{'Authorization': `Bearer ${jwt}`},
+    }).catch(error => {
+        console.error("Getting avatar failed:" + error.message)
+    })
+
+    if(response.ok){
+        let imgBlob = await response.blob()
+        return {success:true,blob:imgBlob}
+    }else{
+        return {success:false}
+    }
+}
+
+export async function getUserSettings(jwt){
+    const response = await fetch(GIFTY_API_URL+ "/user/settings",{
+        method:"GET",
+        headers:{'Authorization': `Bearer ${jwt}`},
+    }).catch(error => {
+        console.error("Getting settings failed:" + error.message)
+    })
+
+    if(response.ok){
+        const {data} = await response.json()
+        const {userSettings} = data
+        return {success:true,userSettings}
+    }else{
+        return {success:false}
+    }
 }

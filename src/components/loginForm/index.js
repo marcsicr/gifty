@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import {Link,useLocation} from 'wouter'
-import {useUser} from 'hooks/useUser'
+import {useUser} from 'hooks/user/useUser'
 import './loginForm.css'
 
 export default function LoginForm(){

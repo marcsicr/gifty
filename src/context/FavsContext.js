@@ -1,6 +1,6 @@
 import React,{useCallback,useState,useEffect} from 'react'
 import {getGifFavorites,addGifToFavorites,removeGifFavorites} from 'services/gifty/API'
-import {useUser} from 'hooks/useUser'
+import {useUser} from 'hooks/user/useUser'
 
 const FavsContext = React.createContext({})
 

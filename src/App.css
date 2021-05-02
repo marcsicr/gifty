@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'pixel';
+    src : local('pixel'), url('fonts/basis33.ttf') format('truetype')
+  }
+  
+  @font-face {
+    font-family: 'ssstandard';
+    src: local('ssstandard'), url('fonts/ssstandard.woff2') format('woff2');
+  }
+
 :root{
     --blue: #00ccff;
     --green: #00ff99;
@@ -10,8 +20,10 @@
     --hover-button-color:rgb(148, 143, 143);
     --btn-color:rgb(20, 19, 19);
 
-
+    --theme-form-container-background: rgb(46, 43, 43);
 }
+
+
 
 body{
     background-color: var(--theme-background);

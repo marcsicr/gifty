@@ -1,6 +1,6 @@
 import React from 'react'
 import Carousel from 'components/carousel'
-import LoadingDots from 'components/loadingDots'
+import LoadingDots from 'components/loaders/loadingDots'
 import CarouselItem from 'components/carousel/carouselItem'
 import useTrendsGifs from 'hooks/useTrendsGifs'
 import SVG_TRENDS from 'img/svg_trends'

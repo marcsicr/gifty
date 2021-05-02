@@ -1,0 +1,45 @@
+.avatar-picker-container{
+    display:flex;
+    flex-direction: column;
+}
+
+.change-avatar-btn{
+  background-color: var(--purple);
+  flex: 1 1 100%;
+  display:block;
+  border: none;
+  width: 100%;
+  padding:10px;
+  color:white;
+  font-weight: 600;
+}
+
+.change-avatar-btn:hover{
+    cursor:pointer;
+}
+
+.avatar-input-file{
+    display:none;
+}
+
+.avatar-image-container{
+    position:relative;
+}
+
+.avatar-image{
+  object-fit: contain;
+}
+
+.loading-avatar{
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 1;
+    background-color: rgba(24, 20, 20, 0.76);
+}

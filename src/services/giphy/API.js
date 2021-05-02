@@ -3,13 +3,12 @@ import {API_KEY,API_URL} from './giphyAPISettings'
 function fromApiToGifs(apiResponse){
 
     const {data = []} = apiResponse
-    const {pagination} = apiResponse
     
 
     if (Array.isArray(data)) {
         const gifs = data.map(image => {
           const {images, title, id} = image
-          const { url } = images.downsized_medium
+          const { url } = images.downsized
           
           const {display_name,avatar_url} = image.hasOwnProperty('user')? image.user : {display_name:'',avatar_url:''}
 
@@ -29,7 +28,7 @@ function fromApiToSearchResults(apiResponse){
     if (Array.isArray(data)) {
           gifs = data.map(image => {
           const {images, title, id} = image
-          const { url } = images.downsized_medium
+          const { url } = images.downsized
           
           const {display_name,avatar_url} = image.hasOwnProperty('user')? image.user : {display_name:'',avatar_url:''}
 

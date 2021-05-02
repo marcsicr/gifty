@@ -8,7 +8,7 @@ import GifsGrid from 'components/gifsGrid/GifsGrid'
 
 import './TrendsGifs.css'
 import useNearScreen from 'hooks/useNearScreen'
-import LoadingDots from 'components/loadingDots'
+import LoadingDots from 'components/loaders/loadingDots'
 
 export default function TrendsGifs(){
 

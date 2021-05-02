@@ -2,7 +2,7 @@ import React, {useEffect, useState}from 'react'
 import {useLocation} from 'wouter'
 
 import {getTrendingSearchTerms} from 'services/giphy/API'
-import LoadingDots from 'components/loadingDots'
+import LoadingDots from 'components/loaders/loadingDots'
 
 import './trendingSearches.css'
 export default function TrendingSearches(){

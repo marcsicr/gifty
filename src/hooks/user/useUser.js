@@ -6,7 +6,7 @@ import UserContext from 'context/UserContext'
 
 export function useUser(){
 
-    const{jwt,setJWT,username,setUsername} = useContext(UserContext)
+    const{jwt,setJWT,username,setUsername,setUserSettings} = useContext(UserContext)
     
     const[state,setState] = useState({loading:false,error:false})
 
@@ -14,17 +14,20 @@ export function useUser(){
     const login = useCallback( async function ({user,password}) {
         
         setState({loading:true,error:false})
-        const {success,jwt,username} = await loginService({username:user,password})
+        const {success,jwt,username,userSettings} = await loginService({username:user,password})
         setState({loading:false,error:false})
 
         if(success){
             window.sessionStorage.setItem('jwt',jwt)
             window.sessionStorage.setItem('username',username)
+            window.sessionStorage.setItem('userSettings',JSON.stringify(userSettings))
             setJWT(jwt)
             setUsername(username)
+            setUserSettings(userSettings)
         }else{
             window.sessionStorage.removeItem('jwt')
             window.sessionStorage.removeItem('username')
+            window.sessionStorage.removeItem('userSettings')
             setState({loading:false,error:true})
         }
 

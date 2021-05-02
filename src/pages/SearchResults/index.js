@@ -6,7 +6,7 @@ import useGifs from "hooks/useGifs";
 import SearchForm from "components/searchForm/SearchForm";
 import Header from "components/header/Header";
 import GifsGrid from "components/gifsGrid/GifsGrid";
-import LoadingDots from "components/loadingDots";
+import LoadingDots from "components/loaders/loadingDots";
 import useNearScreen from "hooks/useNearScreen";
 import RelatedSearchTerms from "components/relatedSearchTerms";
 

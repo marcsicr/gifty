@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useLocation} from 'wouter'
-import {useUser} from 'hooks/useUser'
+import {useUser} from 'hooks/user/useUser'
 
 import './userMenu.css'
 
@@ -39,14 +39,14 @@ export default function UserMenu(){
     return (<>
         <div className="user-menu-container" onClick={handleClick} onMouseEnter={openMenuHandler} onMouseLeave={closeMenuHandler}>
             <div className="user-name-container">
-                <img className="user-display-img" src="https://media.giphy.com/avatars/default5/80h.gif"/>
+                <img className="user-display-img" src="https://media.giphy.com/avatars/default5/80h.gif" alt="img"/>
                 <div className="user-display-name">{ isLogged? username:"Login"}</div>
                 {isLogged?<div className="caret-down"></div>:null}
             </div>
 
             {showMenu?
                     <ul className="user-options-list">
-                        <li>Settings</li>
+                        <li onClick={() => {pushLocation('/settings')}}>Settings</li>
                         <li onClick={() => {pushLocation('/favorites')}}>Favorites</li>
                         <li onClick={logout}>Logout</li>
                     </ul>

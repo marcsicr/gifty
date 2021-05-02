@@ -1,0 +1,76 @@
+.settings-wrapper{
+    display:flex;
+    flex-direction: row;
+}
+
+.settings-menu{
+    flex-basis: 250px;
+    margin-right: 15px;
+    position:sticky;
+    position:-webkit-sticky;
+    top:0;
+    align-self: flex-start; /*Trick to enable scroll*/
+    
+}
+
+.settings-content{
+    flex-grow: 1;
+}
+
+.align-left{
+    display:flex;
+    margin-top: 15px;
+    padding-left:125px;
+    
+}
+
+.settings-nav{
+    list-style-type: none;
+    padding: 0;
+    margin:5px 0 0 0;
+    display:flex;
+    flex-direction: column;
+
+}
+
+.settings-nav li{
+    color:white;
+    font-weight: 600;
+    padding: 5px 0px;
+}
+
+.settings-nav li:hover{
+    background-color: var(--blue);
+    cursor:pointer;
+}
+
+
+.settings-nav-item{
+    padding: 15px 5px;
+    text-decoration: none;
+    color:white;
+}
+
+.settings-nav-item:visited{
+    color:white;
+}
+
+.ss-icon{
+    margin-right: 10px;
+    font-family: 'ssstandard';
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+.ss-settings::before{
+    content:"⚙";  
+}
+
+.ss-password::before{
+    content:"🔒";
+}
+
+.ss-alert::before{
+    content:"⚠";
+}
+
