@@ -1,5 +1,5 @@
 import AnimatedBackground from 'components/animatedBackground'
-import RegisterForm from 'components/registerForm'
+import RegisterForm from 'components/forms/registerForm'
 import React from 'react'
 
 import './register.css'

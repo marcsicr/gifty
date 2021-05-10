@@ -3,7 +3,7 @@ import React from 'react'
 import Header from 'components/header/Header'
 import TrendingSearches from 'components/trendingSearches'
 import TrendingsCarousel from 'components/trendingsCarousel'
-import SearchForm from 'components/searchForm/SearchForm'
+import SearchForm from 'components/forms/searchForm/SearchForm'
 import KeywordCarousel from 'components/keywordCarousel'
 
 import {SPORTS_IMG, ANIMALS_IMG, MUSIC_IMG} from 'img/IMGS'

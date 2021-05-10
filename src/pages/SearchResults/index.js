@@ -3,7 +3,7 @@ import React, { useEffect,useRef,useCallback } from "react";
 import debounce from 'just-debounce-it'
 
 import useGifs from "hooks/useGifs";
-import SearchForm from "components/searchForm/SearchForm";
+import SearchForm from "components/forms/searchForm/SearchForm";
 import Header from "components/header/Header";
 import GifsGrid from "components/gifsGrid/GifsGrid";
 import LoadingDots from "components/loaders/loadingDots";

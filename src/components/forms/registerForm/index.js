@@ -1,14 +1,16 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {useFormik} from 'formik'
-import {registerService,existsUser} from 'services/gifty/API'
+import {registerService} from 'services/gifty/API'
 
 import { PasswordStrengthBar } from 'components/passwordStrengthBar';
 
 import './registerForm.css'
+import GiftyContext from 'context/GiftyContext';
 
 export default function RegisterForm(){
 
     const [errorMsg,setErrorMsg] = useState('')
+    const {existsUser} = useContext(GiftyContext)
 
     const validate = async (values) =>{
 

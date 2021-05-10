@@ -188,3 +188,60 @@ export async function getUserSettings(jwt){
         return {success:false}
     }
 }
+
+export async function saveUserAccountSettings({jwt,displayName,email,about}){
+
+    const response = await fetch(GIFTY_API_URL+ "/user/settings/account",{
+        method:"PUT",
+        headers:{'Authorization': `Bearer ${jwt}`,
+                'Content-Type': 'application/json'},
+        body:JSON.stringify({displayName:displayName,email:email,about:about})
+    }).catch(error => {
+        console.error("Updating settings failed:" + error.message)
+        return {sucess:false,errorMsg:error.message}
+    })
+
+    if(response.ok){
+        return {success:true}
+    }else{
+        return {success:false, errorMsg:"Unexpected error"}
+    }
+}
+
+export async function saveUserRattingSettings({jwt,ratting}){
+
+    const response = await fetch(GIFTY_API_URL+ "/user/settings/ratting",{
+        method:"PUT",
+        headers:{'Authorization': `Bearer ${jwt}`,
+                'Content-Type': 'application/json'},
+        body:JSON.stringify({ratting:ratting})
+    }).catch(error => {
+        console.error("Updating ratting settings failed:" + error.message)
+        return {sucess:false,errorMsg:error.message}
+    })
+
+    if(response.ok){
+        return {success:true}
+    }else{
+        return {success:false, errorMsg:"Unexpected error"}
+    }
+}
+
+export async function updateUserPassword({jwt,currentPwd,newPwd}){
+
+    const response = await fetch(GIFTY_API_URL+ "/user/settings/password",{
+        method:"POST",
+        headers:{'Authorization': `Bearer ${jwt}`,
+                'Content-Type': 'application/json'},
+        body:JSON.stringify({currentPwd,newPwd})
+    }).catch(error => {
+        console.error("Updating password failed:" + error.message)
+        return {sucess:false,errorMsg:error.message}
+    })
+
+    if(response.ok){
+        return {success:true}
+    }else{
+        return {success:false, errorMsg:"Unexpected error"}
+    }
+}

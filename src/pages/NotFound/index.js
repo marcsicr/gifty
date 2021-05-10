@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import SearchForm from 'components/searchForm/SearchForm'
+import SearchForm from 'components/forms/searchForm/SearchForm'
 import Header from 'components/header/Header'
 
 import {getRandomGif} from 'services/giphy/API'

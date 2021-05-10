@@ -4,10 +4,17 @@
     top: 0px;
     left: 0px;
     right: 0px;
-    background-color: var(--green);
     z-index: -1;
     text-align: center;
     opacity: 0;
+}
+
+.error-message{
+    background: var(--red);
+}
+
+.ok-message{
+    background: var(--green);
 }
 
 .flash-message-show{

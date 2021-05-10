@@ -16,10 +16,11 @@ export function FlashMessageProvider({children}){
         ref.current.className = 'flash-message-container'
     }
 
-    const showMessage = ({duration,message="Lorem ipsum"}) =>{
+    const showMessage = ({duration,message="Lorem ipsum", isError=false}) =>{
         setMessage(message)
         if(!isShowing){
-            ref.current.className= 'flash-message-container '+ showClass
+
+            ref.current.className= 'flash-message-container'.concat(showClass).concat(isError? ' error-message':' ok-message')
             setTimeout(show,duration)
         }
     }

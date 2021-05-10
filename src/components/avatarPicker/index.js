@@ -1,16 +1,17 @@
 import {useRef,useContext,useState,useEffect} from 'react'
-import {updateAvatarImage,getAvatarImage} from 'services/gifty/API'
 import {useLoggedUser} from 'hooks/user/useLoggedUser'
-import UserContext from 'context/UserContext'
 import './avatarPicker.css'
 import LoadingSpinner from 'components/loaders/loadingSpinner'
+import GiftyContext from 'context/GiftyContext'
 export default function AvatarPicker(){
 
     useLoggedUser()
     
     const MAX_IMAGE_SIZE = 1024 * 1024 * 2; // in bytes
 
-    const {jwt} = useContext(UserContext)
+    const {getAvatar,uploadAvatar} = useContext(GiftyContext)
+    
+    
     const [uploading,setUploading] = useState(false)
     const inputFileRef = useRef(null)
     const formRef = useRef(null)
@@ -42,7 +43,7 @@ export default function AvatarPicker(){
     const  getUserAvatarImage = async () =>{
        
        let url;
-       const {success,blob} = await getAvatarImage(jwt)
+       const {success,blob} = await getAvatar()
        if(success){
         url = URL.createObjectURL(blob)
        }else{
@@ -57,14 +58,14 @@ export default function AvatarPicker(){
             setTimeout(resolve.bind(null,v),t)
         })
     } 
+
     const uploadFile=(imageFile) => {
         let formData = new FormData()
         formData.append("avatar",imageFile)
         setUploading(true)
 
 
-        updateAvatarImage(jwt,formData).then( (result) => {
-           
+        uploadAvatar(formData).then( (result) => {      
             console.log("File uploaded")
             delay(500).then(() =>{
                 getUserAvatarImage()
