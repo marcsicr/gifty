@@ -2,12 +2,13 @@ import React, {useContext} from 'react'
 import FormContainer, {FormSelect, FormButton} from 'components/forms/formContainer'
 import FlashMessageContext from 'context/FlashMessageContext';
 import GiftyContext from 'context/GiftyContext';
+import Gifty from 'services/gifty/service'
 
 
-export default function SearchSettingsForm ({ratting = 'g'}){
+export default function SearchSettingsForm ({rating = 'g'}){
     
     const {showMessage} = useContext(FlashMessageContext)
-    const {saveRattingSettings} = useContext(GiftyContext)
+    const ctx = useContext(GiftyContext)
 
     const ratingOps = [
         {value:"g",text:"All public"},
@@ -17,17 +18,19 @@ export default function SearchSettingsForm ({ratting = 'g'}){
     ]
     
     const searchSettingsSubmit = (values) =>{
-        const {ratting} = values
-        saveRattingSettings({ratting}).then(({success}) =>{
+        const {rating} = values
+        console.log('Rating submited',rating)
+        Gifty.saveRatingSettings({rating},ctx).then((success) =>{
             if(success){
                 showMessage({duration:4000, message:'Ratting settings saved :)'})
             }
+
         })
     }
 
   
-    return <FormContainer title="Search Settings" submitFunc={searchSettingsSubmit} initValues={{ratting:ratting}}>
-        <FormSelect name="ratting" label="Rattings" options={ratingOps} defaultOption={ratting} />
+    return <FormContainer title="Search Settings" submitFunc={searchSettingsSubmit} initValues={{rating}}>
+        <FormSelect name="rating" label="Rattings" options={ratingOps} defaultOption={rating} />
         <FormButton text="Save"/>
     </FormContainer>
 

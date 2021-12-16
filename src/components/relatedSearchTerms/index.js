@@ -1,6 +1,7 @@
+import React from 'react'
 import { useRelatedTerms } from 'hooks/useRelatedTerms'
 import {Link} from 'wouter'
-import React, { useEffect } from 'react'
+
 
 import './relatedSearchTerms.css'
 export default function RelatedSearchTerms({term,maxResults = 4}){
@@ -16,7 +17,7 @@ export default function RelatedSearchTerms({term,maxResults = 4}){
 
 function TermsList({terms}){
 
-    console.log(terms)
+   // console.log(terms)
     return <ul className="rt-list">
         {
             terms.map((term) => {

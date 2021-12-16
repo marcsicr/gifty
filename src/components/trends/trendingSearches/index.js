@@ -10,7 +10,9 @@ export default function TrendingSearches(){
     
     const COLORS = ['tg','tb','tp','tr','ty']
 
+    // eslint-disable-next-line no-unused-vars
     const [_, pushLocation] = useLocation()
+
 
     const [terms,setTerms] = useState([])
     const [isLoading,setIsLoading] = useState(true)

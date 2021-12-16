@@ -15,8 +15,8 @@ export default function Favorites(){
 
     useEffect(()=>{
        // debugger
-       console.log("page data:",favGifsData)
-       console.log("isGifDataLoading",isGifsDataLoading)
+       //console.log("page data:",favGifsData)
+       //console.log("isGifDataLoading",isGifsDataLoading)
     },[favGifsData,isGifsDataLoading])
 
     return <div id="app-wrapper">

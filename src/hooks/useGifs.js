@@ -8,7 +8,6 @@ export default function useGifs({keyword,rating,limit}){
     const [isLoading,setIsLoading] = useState(true)
     const [isLoadingNextPage, setLoadingNextPage] = useState(false)
     
-
     const [page, setPage] = useState(INITIAL_PAGE)
     const [gifs,setGifs] = useState([])
     const [resultsCount, setGifsCount] = useState(0)

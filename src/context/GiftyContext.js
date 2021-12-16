@@ -1,85 +1,46 @@
-import React, {useContext} from 'react'
-import  {
-    getAvatarImage,
-    updateAvatarImage,
-    updateUserPassword,
-    saveUserAccountSettings,
-    saveUserRattingSettings,
-    getUserSettings,
-    existsUser
-} from 'services/gifty/API'
-import {useLocation} from 'wouter'
-import UserContext from './UserContext'
-
+import React, {useEffect,useState,useCallback} from 'react'
+import Gifty from 'services/gifty/service'
 const GiftyContext = React.createContext({})
 
 export function GiftyContextProvider({children}){
 
-    const {jwt} = useContext(UserContext)
-    const [_,pushLocation] = useLocation()
 
-    
-    const validateSession = () =>{
-        if(!jwt)
-        pushLocation('/login')
-    }
+    const [jwt,setJWT] = useState( () => window.sessionStorage.getItem('jwt'))
+    const [username,setUsername] = useState(() => window.sessionStorage.getItem('username'))
+    const [userSettings,setUserSettings] = useState(() => JSON.parse(window.sessionStorage.getItem('userSettings')))
+    const [favs,setFavs] = useState([])
 
-    const getAvatar = async() =>{
-        validateSession()
-        return await getAvatarImage(jwt)
-    }
+    useEffect(()=>{
+        if(!jwt) return
+        Gifty.fetchFavorites({jwt,setFavs})
+    },[jwt])
 
-    const uploadAvatar = async(formData) =>{
-        validateSession()
-        return updateAvatarImage(jwt,formData)
-    }
+    const isGifFav = useCallback((idGif) =>{    
+        if(!jwt) return false;
 
-    const updatePassword  = async({currentPwd,newPwd}) => {
-        validateSession()
-        return updateUserPassword({jwt,currentPwd,newPwd})
-    }
-    
-    const saveRattingSettings = async({ratting}) =>{
-        validateSession()
-        return saveUserRattingSettings({jwt,ratting})
-    }
+        if(favs === undefined)
+            return false
 
-    const saveAccountSettings = async({displayName,email,about}) =>{
-        validateSession()
-        return saveUserAccountSettings({jwt,displayName,email,about})
-    }
+        if(Array.isArray(favs)) {
+            let index = favs.indexOf(idGif)
+            return index >=0
+        } 
+        return false
+     
+    },[favs,jwt])
 
-    const getSettings = async() =>{
-        validateSession()
-        return getUserSettings(jwt)
-    }
-
-   
-
-   
-    //1.login
-    //2.register
-    //3.existsUser -
-    //4.addGifToFavs *
-    //5.removeGifFromFavs *
-    //6.getGifFavorites *
-    //7.getAvatarImage * -
-    //8.updateAvatarImage * -
-    //9.getSettings * -
-    //10.saveAccountSettings * - 
-    //11.saveRattingsSettings * -
-    //12.updatePassword * -
-
-
+    //-----------
     return <GiftyContext.Provider value={{
+        jwt,
         isLogged:Boolean(jwt),
-        getAvatar,
-        uploadAvatar,
-        updatePassword,
-        getSettings,
-        saveAccountSettings,
-        saveRattingSettings,
-        existsUser
+        username,
+        userSettings,
+        favs,
+        setJWT,
+        setFavs,
+        setUsername,
+        setUserSettings,
+        isGifFav,
     }}>
         {children}
     </GiftyContext.Provider>

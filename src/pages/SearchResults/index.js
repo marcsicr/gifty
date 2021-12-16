@@ -12,11 +12,13 @@ import RelatedSearchTerms from "components/relatedSearchTerms";
 
 import './searchResults.css'
 
-export default function SearchResults({ params }) {
-  const { keyword, rating = "g" } = params;
+export default function SearchResults(props) {
+
+  console.log("SerachResults Paramters",props)
+  
+  const { keyword, rating = "g" } = props.params;
   const {isLoading,isLoadingNextPage,gifs,resultsCount,setPage} = useGifs({ keyword, rating});
 
-  
 
   const externalRef = useRef()
   const {isNearScreen} = useNearScreen({
@@ -27,13 +29,15 @@ export default function SearchResults({ params }) {
 
 
   const debounceHandleNextPage = useCallback(debounce (
-    () => setPage(prevPage => prevPage +1),200
+    () => setPage(prevPage => prevPage +1),250
+    
   ),[setPage])
 
   useEffect( () => {
     if(isNearScreen) debounceHandleNextPage()
   }, [debounceHandleNextPage,isNearScreen])
 
+  
 
   return (
     <div className="search-results">

@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from 'components/header/Header'
-import TrendsGifs from 'components/trendsGifs/TrendsGifs'
+import TrendsGifs from 'components/trends/trendsGifs/TrendsGifs'
 import SearchForm from 'components/forms/searchForm/SearchForm'
 
 export default function Trendings(){

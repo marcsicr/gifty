@@ -1,16 +1,16 @@
 import {useRef,useContext,useState,useEffect} from 'react'
-import {useLoggedUser} from 'hooks/user/useLoggedUser'
 import './avatarPicker.css'
 import LoadingSpinner from 'components/loaders/loadingSpinner'
 import GiftyContext from 'context/GiftyContext'
+import { useLoggedUser } from 'hooks/user/useLoggedUser'
+import Gifty from 'services/gifty/service'
+
 export default function AvatarPicker(){
 
     useLoggedUser()
-    
-    const MAX_IMAGE_SIZE = 1024 * 1024 * 2; // in bytes
 
-    const {getAvatar,uploadAvatar} = useContext(GiftyContext)
-    
+    const MAX_IMAGE_SIZE = 1024 * 1024 * 2; // in bytes
+    const ctx = useContext(GiftyContext)
     
     const [uploading,setUploading] = useState(false)
     const inputFileRef = useRef(null)
@@ -43,7 +43,7 @@ export default function AvatarPicker(){
     const  getUserAvatarImage = async () =>{
        
        let url;
-       const {success,blob} = await getAvatar()
+       const {success,blob} = await Gifty.getAvatar(ctx)
        if(success){
         url = URL.createObjectURL(blob)
        }else{
@@ -65,7 +65,7 @@ export default function AvatarPicker(){
         setUploading(true)
 
 
-        uploadAvatar(formData).then( (result) => {      
+        Gifty.uploadAvatar(formData,ctx).then( (result) => {      
             console.log("File uploaded")
             delay(500).then(() =>{
                 getUserAvatarImage()
@@ -82,7 +82,7 @@ export default function AvatarPicker(){
 
     //https://stackoverflow.com/questions/50248329/fetch-image-from-api
     
-    return <form ref={formRef}>
+    return <form ref={formRef} encType="multipart/form-data">
         <div className="avatar-picker-container">
                 <div className="avatar-image-container">
                     <img className="avatar-image"ref={avatarRef} src="https://media.giphy.com/avatars/default5.gif" alt="User avatar"/>
@@ -94,7 +94,7 @@ export default function AvatarPicker(){
                 
                 <div>
                    <button className="change-avatar-btn" onClick={onChangeAvatarClick}>Change avatar</button>
-                    <input ref={inputFileRef} type="file" className="avatar-input-file" accept="image/jpeg,image/png" onChange={onFileInputChange} />
+                    <input ref={inputFileRef} type="file" name="avatar" className="avatar-input-file" accept="image/jpeg,image/png" onChange={onFileInputChange} />
                 </div>
         </div>
     </form>

@@ -1,4 +1,5 @@
-import FavsContext from 'context/FavsContext'
+
+import GiftyContext from 'context/GiftyContext'
 import {useContext, useEffect, useState} from 'react'
 import {getGifsById} from 'services/giphy/API'
 
@@ -7,7 +8,7 @@ export default function useFavoriteGifs(){
    
     const [isGifsDataLoading,setIsLoading] = useState(true)
     const [favGifsData,setFavoriteGifsData] = useState([])
-    const {favs,isFavsLoading} = useContext(FavsContext)
+    const {favs,isFavsLoading} = useContext(GiftyContext)
 
     useEffect(()=>{
 
@@ -17,7 +18,6 @@ export default function useFavoriteGifs(){
         if(favs.length > 0){
             setIsLoading(true)
             getGifsById(favs).then((gifs) =>{
-                console.log("request returned:",gifs)
                 setFavoriteGifsData(gifs)
                 setIsLoading(false)
             })

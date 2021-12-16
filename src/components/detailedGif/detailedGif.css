@@ -1,0 +1,142 @@
+
+.gif-details-wrapper{
+    display:flex;
+}
+
+.gif-picture{
+    width:50%;
+}
+
+.gif-picture img{
+    width:100%;
+}
+
+.gif-details{
+    padding-left: 30px;
+}
+
+.gif-details-list{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.share-icon{
+    height: 36px;
+    width: 36px;
+    display: inline-block;
+    margin-left: 5px;
+    background: no-repeat url('./icons_sprite_2x_share.png');
+    background-size: 288px 216px;
+}
+
+.share-icon:hover{
+    cursor:pointer;
+}
+
+.share-fbk{
+    background-color: #3894fc;
+    background-position: 0 -144px;
+}
+
+.share-twitter{
+    background-color: #00ccff;
+    background-position: 0 -72px;
+}
+
+.share-insta{
+    background-color: #c23c8d;;
+    background-position: 0 -180px;
+}
+
+.share-pinterest{
+    background-color: #e54cb5;
+    background-position: 0 -36px;
+}
+
+.share-reddit{
+    background-color: #fc6669;
+    background-position: 0 0px;
+}
+
+@keyframes fbk-share-animated {
+  
+    0%{background-position-x: 0}
+    20%{background-position-x: 0 } 
+    25%{background-position-x: -36px}
+    30%{background-position-x: -72px }
+    35%{background-position-x: -108px }
+    40%{background-position-x: -144px }
+    60%{background-position-x: -144px }
+    65%{background-position-x: -180px }
+    70%{background-position-x: -216px }
+    75%{background-position-x: -252px }
+    80%{background-position-x: 0 }
+    100%{background-position-x: 0 }
+}
+
+@keyframes insta-share-animated {
+  
+    0%{background-position-x: 0}
+    20%{background-position-x: 0 } 
+    25%{background-position-x: -36px}
+    30%{background-position-x: -72px }
+    32%{background-position-x: 0px}
+    35%{background-position-x: -108px }
+    40%{background-position-x: -144px }
+    60%{background-position-x: -144px }
+    65%{background-position-x: -180px }
+    80%{background-position-x: 0 }
+    100%{background-position-x: 0 }
+}
+
+@keyframes twitter-share-animated {
+    0%{background-position-x: 0}
+    25%{background-position-x: -36px}
+    30%{background-position-x: -72px }
+    35%{background-position-x: -108px }
+    100%{background-position-x: -144px }
+    
+}
+
+@keyframes pinterest-share-animated{
+    0%{background-position-x: 0}
+    10%{background-position-x: 0}
+    25%{background-position-x: -36px}
+    45%{background-position-x: -72px }
+    75%{background-position-x: -108px }
+    85%{background-position-x: -144px }
+    90%{background-position-x: -180px }
+    100%{background-position-x: -180px }
+}
+
+@keyframes reddit-share-animated{
+    0%{background-position-x: 0}
+    25%{background-position-x: -36px}
+    50%{background-position-x: -72px }
+    75%{background-position-x: -108px }
+    80%{background-position-x: -144px }
+    95%{background-position-x: -180px }
+    100%{background-position-x: -180px }
+}
+
+.share-fbk:hover{
+    animation: fbk-share-animated 1s steps(1) infinite alternate;
+}
+
+.share-insta:hover{
+    animation: insta-share-animated 1s steps(1) infinite;
+}
+
+.share-twitter:hover{
+    animation: twitter-share-animated .20s steps(1) infinite;
+}
+
+.share-reddit:hover{
+    animation: reddit-share-animated 0.8s steps(1) infinite alternate;
+}
+
+.share-pinterest:hover{
+    animation: pinterest-share-animated .5s steps(1) infinite alternate;
+}
+
+

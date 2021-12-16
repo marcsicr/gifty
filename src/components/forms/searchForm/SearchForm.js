@@ -1,24 +1,27 @@
+import GiftyContext from "context/GiftyContext";
 import React from "react"
-import { useLocation } from "wouter";
-import useSearchForm , {RATINGS} from './hook';
-
-import "./searchForm.css";
+import { useContext } from "react/cjs/react.development";
+import useSearchForm, {RATINGS} from './hook';
+import {useLocation} from 'wouter'
+import style from "./searchForm.module.css";
 
 
 export default function SearchForm({
   initialKeyword = '',
-  initialRating = RATINGS[0]
 }) {
   
- 
-  const [_, pushLocation] = useLocation();
-  const {changeKeyword,changeRating,keyword,rating} = useSearchForm({initialKeyword,initialRating});
+  const {changeKeyword,changeRating,keyword,rating} = useSearchForm({initialKeyword});
+  const {isLogged} = useContext(GiftyContext)
+
+  const[_,pushLocation] = useLocation()
+
 
   const onSubmit = (evt) => {
+    console.log("submited")
     evt.preventDefault();
     console.log(keyword);
     if (keyword !== "") {
-      pushLocation(`/search/${keyword}/${rating}`);
+      pushLocation(`/search/${keyword}/${rating}`)
     }
   };
 
@@ -33,22 +36,27 @@ export default function SearchForm({
 
   return (
     <>
-      <form className="search-gifs-form" onSubmit={onSubmit}>
+      <form className={style['search-gifs-form']} onSubmit={onSubmit}>
         <input
-          className="form-input"
+          className={style['form-input']}
           type="text"
           placeholder="Search a gif here.."
           onChange={handleChangeInput}
         />
-        <select className="form-input" value={rating} onChange={handleChangeRating}>
+
+        { !isLogged? 
+          <select className={style['form-input']} value={rating} onChange={handleChangeRating}>
           <option disabled>Gif Rating</option>
           {RATINGS.map((rating) => (
             <option key={rating}>{rating}</option>
           ))}
-        </select>
+          </select>
+        : null
 
-        <div className="search-button gradient" onClick={onSubmit}>
-          <img src={process.env.PUBLIC_URL + "/static/img/search-icon.svg"} />
+        }
+       
+        <div className={`${style['search-button']} ${style.gradient}`} onClick={onSubmit}>
+          <img alt="search icon" src={process.env.PUBLIC_URL + "/static/img/search-icon.svg"} />
         </div>
       </form>
     </>

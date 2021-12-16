@@ -15,7 +15,7 @@ export function useRelatedTerms({term,maxResults}){
             setIsLoading(false)
         })
         
-    },[term])
+    },[term,maxResults])
 
     return {isTermsLoading,relatedTerms}
 }

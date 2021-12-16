@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import Gifty from 'services/gifty/service'
 import {useLocation} from 'wouter'
-import {useUser} from 'hooks/user/useUser'
 
 import './userMenu.css'
+import GiftyContext from 'context/GiftyContext'
 
 export default function UserMenu(){
 
     const [showMenu,setShowMenu] = useState(false)
+
+    // eslint-disable-next-line no-unused-vars
     const [_, pushLocation] = useLocation();
 
-    const {isLogged,logout,username} = useUser();
-
-    
+    const ctx = useContext(GiftyContext);
+    const {isLogged,username} =ctx
+   
     useEffect( () =>{
         if(!isLogged)
             setShowMenu(false)
@@ -48,7 +51,7 @@ export default function UserMenu(){
                     <ul className="user-options-list">
                         <li onClick={() => {pushLocation('/settings')}}>Settings</li>
                         <li onClick={() => {pushLocation('/favorites')}}>Favorites</li>
-                        <li onClick={logout}>Logout</li>
+                        <li onClick={() =>Gifty.logout(ctx)}>Logout</li>
                     </ul>
                
                 :null}

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'wouter'
-import UserMenu from 'components/userMenu'
+import UserMenu from 'components/user/userMenu'
 import './Header.css'
 
 export default function Header(){

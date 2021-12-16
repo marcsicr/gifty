@@ -3,6 +3,7 @@
     flex-direction: row;
     width:100%;
     padding:15px 0;
+    height:96px;
 
 }
 
@@ -28,9 +29,7 @@
     100%{opacity:0; background-position:100% 0%}
 }
 
-.search-button{
-    cursor:pointer;
-}
+
 .gradient{
     background: rgba(0,0,0,0) linear-gradient(45deg, rgb(153, 51, 255) 0%, rgb(255, 102, 102) 100%) repeat scroll 0% 0%;
     background-attachment:scroll;
@@ -60,7 +59,13 @@
     cursor:pointer;
     display:flex;
     justify-content: center;
-    padding:8px;
+    align-items: center;
+    width:96px;
+}
+
+.search-button img{
+    width: 42px;
+    height: 42px;
 }
 
 select{

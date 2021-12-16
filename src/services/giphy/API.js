@@ -98,21 +98,21 @@ export async function getRandomGif({
 
 export async function getGifById(idGif){
 
-    const dataURL = `${API_URL}/gifs?api_key=${API_KEY}&gif_id=${idGif}`
+    const dataURL = `${API_URL}/gifs/${idGif}?api_key=${API_KEY}`
     return fetch(dataURL)
     .then(res => res.json()).then((response) => {
 
-        const {images, title, id} = response.data
-        const { url } = images.downsized_medium
+        console.log(response)
+        const {images, title, id,source,rating,import_datetime} = response.data
+        const { url,width,height,size } = images.downsized_medium
            
         const {display_name,avatar_url} = response.hasOwnProperty('user')? response.user : {display_name:'',avatar_url:''}
 
-        return { title, id, url,username:display_name,user_avatar:avatar_url }
+        return { title, id, url,username:display_name,user_avatar:avatar_url,source,rating,import_datetime, width,height,size }
     })
 }
 
 export async function getGifsById(idsArray){
-    console.log(idsArray)
     if(!Array.isArray(idsArray))
         return
 

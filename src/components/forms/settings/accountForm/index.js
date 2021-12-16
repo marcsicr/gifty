@@ -2,18 +2,18 @@ import React, {useContext} from 'react'
 import FormContainer, {FormInput, FormTextArea, FormButton} from 'components/forms/formContainer'
 import FlashMessageContext from 'context/FlashMessageContext'
 import GiftyContext from 'context/GiftyContext'
+import Gifty from 'services/gifty/service'
 
 export default function AccountSettingsForm({displayName,email,about}){
     
-    const {saveAccountSettings} = useContext(GiftyContext)
+    const ctx = useContext(GiftyContext)
     const {showMessage} = useContext(FlashMessageContext)
     
-
     const accountSettingsSubmit = (values)=> {
-        console.log(values)
+        //console.log(values)
         const {displayName,email,about} = values
 
-        saveAccountSettings({displayName,email,about}).then(() =>{
+        Gifty.saveAccountSettings({displayName,email,about},ctx).then(() =>{
             showMessage({duration:4000, message:'Account settings saved :D'})
         })
        

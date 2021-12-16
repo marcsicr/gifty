@@ -1,7 +1,7 @@
 import React from 'react'
-import Carousel from 'components/carousel'
+import Carousel from 'components/carousels/carousel'
 import LoadingDots from 'components/loaders/loadingDots'
-import CarouselItem from 'components/carousel/carouselItem'
+import CarouselItem from 'components/carousels/carousel/carouselItem'
 import useGifs from 'hooks/useGifs'
 import SectionTitle, {ViewMoreLink} from 'components/sectionTitle'
 

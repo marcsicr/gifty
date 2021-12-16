@@ -1,14 +1,15 @@
 import React, {useState,useContext} from 'react'
-import {PasswordStrengthBar} from 'components/passwordStrengthBar'
+import {PasswordStrengthBar} from 'components/forms/passwordStrengthBar'
 import FormContainer, {FormPassword, FormButton} from 'components/forms/formContainer'
 
 import FlashMessageContext from 'context/FlashMessageContext'
 import GiftyContext from 'context/GiftyContext'
+import Gifty from 'services/gifty/service'
 
 export default function PasswordSettingsForm(){
 
     const {showMessage} = useContext(FlashMessageContext)
-    const {updatePassword}  = useContext(GiftyContext)
+    const ctx  = useContext(GiftyContext)
 
     const[newPWDInput, setNewPWDInput] = useState("")
     const passwordSettingsSubmit = (values) => {
@@ -17,8 +18,7 @@ export default function PasswordSettingsForm(){
 
         if(currentpwd !== '' && newpwd !== '' && repeatpwd !== '' && newpwd === repeatpwd){
             
-            updatePassword({currentPwd:currentpwd,newPwd:newpwd}).then(({success})=>{
-
+            Gifty.updatePassword({currentPwd:currentpwd,newPwd:newpwd},ctx).then(({success})=>{
                 console.log(success)
                 if(success){
                     showMessage({duration:4000, message:'Password updated :D',isError:false})

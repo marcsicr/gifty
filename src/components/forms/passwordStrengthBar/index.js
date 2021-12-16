@@ -12,7 +12,7 @@ export function PasswordStrengthBar({password}){
 
     const [level,setLevel] = useState(-1)
 
-    const lines = [firstLine,secondLine,thirdLine,fourthLine]
+    
 
     //Level 0 less than 6 characters
     //Level 1: 6 characters or more but only lowercase / uppercase / number
@@ -54,12 +54,13 @@ export function PasswordStrengthBar({password}){
         
         let strength = securityLevel(password)
         setLevel(strength)
-        console.log(password +" " +strength);
+        //console.log(password +" " +strength);
 
     },[password])
 
     useEffect( () =>{
 
+        const lines = [firstLine,secondLine,thirdLine,fourthLine]
         if(level < 0){
             lines.forEach((line) => {
                 line.current.className=""

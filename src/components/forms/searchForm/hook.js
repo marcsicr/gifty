@@ -1,4 +1,6 @@
-import {useReducer} from 'react'
+import GiftyContext from 'context/GiftyContext'
+import {useReducer,useContext} from 'react'
+import { useEffect } from 'react/cjs/react.development'
 
 
 const ACTIONS = {
@@ -6,9 +8,8 @@ const ACTIONS = {
     CHANGE_RATING: "change_rating"
 }
 
+
 export const RATINGS = ['g','pg','pg-13','r']
-
-
 
 const ACTIONS_REDUCERS = {
     [ACTIONS.CHANGE_KEYWORD]: (state,action) => ({
@@ -28,11 +29,17 @@ const reducer = (state,action) =>{
 
 export default function useSearchForm({
 initialKeyword = "",
-initialRating = RATINGS[0]
 } = {}){
-    
+
+    const {userSettings} = useContext(GiftyContext)
+    const initialRating = userSettings? userSettings.rating : RATINGS[0]
     const [{keyword,rating},dispatch] = useReducer(reducer,{keyword:decodeURI(initialKeyword),rating:initialRating})
 
+    useEffect(() =>{
+        if(userSettings)
+            dispatch({type:ACTIONS.CHANGE_RATING,payload:userSettings.rating})
+    },[userSettings])
+    
     return {
        changeKeyword:({keyword}) => dispatch({type:ACTIONS.CHANGE_KEYWORD, payload:keyword}),
        changeRating:({rating}) => dispatch({type:ACTIONS.CHANGE_RATING,payload:rating}),

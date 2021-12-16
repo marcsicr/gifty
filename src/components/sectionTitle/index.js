@@ -4,6 +4,7 @@ import './sectionTitle.css'
 
 export const ViewMoreLink = ({message,path}) =>{
 
+    // eslint-disable-next-line no-unused-vars
     const [_, pushLocation] = useLocation();
 
     const onClick = (evt) =>{
